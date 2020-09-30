@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>URL Information</title>
+
+</head>
+<body>
+
+	<!-- Creating Form -->
+	<form method="post" action="URLservlet">
+
+	<!-- Make a list of text boxes (might only be one)  -->
+	<ul id="boxlist" style="list-style-type:none;padding-left:0;">
+		<li>
+			<br>
+			<input type="text" name="link1">
+			<!-- If the user clicks add URl button then I call a function to make a new text box and add it to the list -->
+			<button onclick="new_text_box()" type="button">Add URL</button>
+		</li>
+	
+	
+	
+	</ul>
+
+		
+	<script> 
+		<!-- counter is used to keep track of all text box names -->
+		var linkCounter = 2;
+	
+		<!-- This is the function to make the new text box -->
+		function new_text_box(){
+			<!-- Creating a new text box for list -->
+			var node = document.createElement("li");
+			var text_box = document.createElement("input");
+			text_box.setAttribute('type','text');
+			
+			<!-- Naming text box "link" plus the number of the counter to keep track of them for the servlet-->
+			<!-- Example: if counter was 2 then the name of the text box would be "link2" -->
+			text_box.setAttribute('name','link' + linkCounter++);
+			
+			
+			node.appendChild(text_box);
+		
+			<!-- Getting the list element and then inserting new text box -->
+			var list = document.getElementById("boxlist");
+			list.insertBefore(node, list.childNodes[0]);
+			
+			<!-- Used to make the view look cleaner -->
+			var br = document.createElement('br');
+			list.insertBefore(br,list.childNodes[0]);
+			
+			
+			
+		}	
+	
+		</script>
+		
+	<!-- Submit Button -->	
+	<input type="submit" value="Submit">
+	
+	
+	
+	
+	</form>
+	
+
+
+</body>
+</html>
